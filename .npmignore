@@ -6,6 +6,7 @@
 .travis.yml
 appveyor.yml
 coverage
+integration
 media
 npm-debug.log
 test

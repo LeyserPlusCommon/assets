@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Assets</title>
+    <style>* { margin: 0; padding: 0 }</style>
+  </head>
+  <body>
+    <div id="fixtures" style="width: 300px">
+      <% dataUris.forEach(function (uri) { %>
+        <img src="<%= uri %>" style="display: block; margin: 5px">
+      <% }); %>
+    </div>
+  </body>
+</html>
