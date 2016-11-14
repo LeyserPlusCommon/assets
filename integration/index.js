@@ -7,10 +7,11 @@ import webdriverio from 'webdriverio';
 import server from './helpers/server';
 
 test.beforeEach(t => {
-  // start an Express server serving the fixtures
   t.context.client = webdriverio.remote({
     desiredCapabilities: {
-      browserName: 'phantomjs',
+      browserName: process.env.BROWSER || 'phantomjs',
+      build: process.env.TRAVIS_BUILD_NUMBER,
+      'tunnel-identifier': process.env.TRAVIS_JOB_NUMBER,
     },
   });
   webdrivercss.init(t.context.client);

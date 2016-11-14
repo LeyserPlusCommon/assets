@@ -1,7 +1,44 @@
 sudo: false
 language: node_js
-node_js:
-  - "stable"
-  - "4"
-  - "0.12"
-after_success: npm run coveralls
+matrix:
+  include:
+  # - env: NAME="Lint"
+  #   nodejs: "stable"
+  #   script: "npm run lint"
+
+  - env: BROWSER="Chrome"
+    nodejs: "stable"
+    script: "npm run integration"
+    addons:
+      apt:
+        packages:
+          - graphicsmagick
+      sauce_connect:
+        username: "assets"
+      jwt:
+        secure: SEz7lldMdNa+1tcMhBWsw3oPp63s0jXBrO7tBu+FS7At9/zB0Xmv9/TfbIom7V7r+GpSjv3LGjRuxm9uxYNEWGASWySmoEJy5wQ8fwXeK0l9LpYy72gGkzWUpGdTa0snUos+8EmX0D6a3jncPPTcMYG0oI59Kog1XJn2Bu28hnaSXUmv+yKLk5F+5lywywHTogyATd4fLZc+5ghFlyFSeLMVy6ofHejwyl5iD5NjvEP2XsDFu9MuADL2RidXuWDiXIGEaRLmGXx6vkxDxG1XagmRLPAeUtz8T3f+3wb7YslUWVBVfC6X+nd8CrwwzDY557/r3dL0dfxC/33KfgxRtLUpT8h2CyT/KXMIv1TPoT8O4yFw6YHrXV8Ch8eoZcyxOd1YTIFLfaVMeJ+tWsnp1xVPOL+1faqcug7N5u/WHj/VFcX5OZh5OkuGCpfY0w13wT7DJMlmClYKi+5qjcTbkZp/1Ju3EA7enVQr78T/cePDwqk3DFl1cSM7yRGuImlzFpMT48SxQCwx8wKHmof5zsOqkt/9OWPYEyS2JlYFEOfiwQHKDx61Aigta96ElL8fb4TbTJcehqxmWhZzvgeSLWiJQAAZJIF2YZtLVo+gtOWGdlJWcgrx4K6hmFQVCB4TwzamlG5M3gy6DzL6ytIzwwh1s9TFJjIK2vZ6J7I13tw=
+
+  - env: BROWSER="Internet Explorer"
+    nodejs: "stable"
+    script: "npm run integration"
+    addons:
+      apt:
+        packages:
+          - graphicsmagick
+      sauce_connect:
+        username: "assets"
+      jwt:
+        secure: SEz7lldMdNa+1tcMhBWsw3oPp63s0jXBrO7tBu+FS7At9/zB0Xmv9/TfbIom7V7r+GpSjv3LGjRuxm9uxYNEWGASWySmoEJy5wQ8fwXeK0l9LpYy72gGkzWUpGdTa0snUos+8EmX0D6a3jncPPTcMYG0oI59Kog1XJn2Bu28hnaSXUmv+yKLk5F+5lywywHTogyATd4fLZc+5ghFlyFSeLMVy6ofHejwyl5iD5NjvEP2XsDFu9MuADL2RidXuWDiXIGEaRLmGXx6vkxDxG1XagmRLPAeUtz8T3f+3wb7YslUWVBVfC6X+nd8CrwwzDY557/r3dL0dfxC/33KfgxRtLUpT8h2CyT/KXMIv1TPoT8O4yFw6YHrXV8Ch8eoZcyxOd1YTIFLfaVMeJ+tWsnp1xVPOL+1faqcug7N5u/WHj/VFcX5OZh5OkuGCpfY0w13wT7DJMlmClYKi+5qjcTbkZp/1Ju3EA7enVQr78T/cePDwqk3DFl1cSM7yRGuImlzFpMT48SxQCwx8wKHmof5zsOqkt/9OWPYEyS2JlYFEOfiwQHKDx61Aigta96ElL8fb4TbTJcehqxmWhZzvgeSLWiJQAAZJIF2YZtLVo+gtOWGdlJWcgrx4K6hmFQVCB4TwzamlG5M3gy6DzL6ytIzwwh1s9TFJjIK2vZ6J7I13tw=
+
+  # - env: NAME="Latest stable Node + Coverage"
+  #   node_js: "stable"
+  #   script: "npm run unit"
+  #   after_success: "npm run coveralls"
+
+  # - env: NAME="Node 4"
+  #   node_js: "4"
+  #   script: "npm run unit"
+
+  # - env: NAME="Node 0.12"
+  #   node_js: "0.12"
+  #   script: "npm run unit"
