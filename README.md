@@ -1,5 +1,12 @@
 # ![assets](https://rawgit.com/assetsjs/assets/develop/media/assets.svg)
 
+
+A Fork of [Vadym Borodin](borodean@gmail.com)'s assets repository. The only change is encoding all types of file include svg use base64 encoding to improve compatibility in ie11.
+
+Because svg with `style` tag can't display well in ie11 if use a optimizing encoding to reduce size [](https://codepen.io/tigt/post/optimizing-svgs-in-data-uris)
+
+----------------
+
 Assets is an asset manager for node. It isolates assets from environmental changes, gets generates their URLs, retrieves image sizes and base64-encodes them.
 
 [![Unix Build Status][travis-badge]][travis] [![Windows Build Status][appveyor-badge]][appveyor] [![Coverage][coveralls-badge]][coveralls]
